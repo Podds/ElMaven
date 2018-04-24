@@ -296,7 +296,7 @@ void TableDockWidget::updateCompoundWidget() {
       PeakGroup *group = v.value<PeakGroup *>();
       if (group == nullptr)
         continue;
-      _mainwindow->ligandWidget->markAsDone(group->compound);
+      _mainwindow->ligandWidget->markAsDone(group->getCompound());
     }
     ++itr;
   }
@@ -361,7 +361,7 @@ void TableDockWidget::addRow(PeakGroup *group, QTreeWidgetItem *root) {
   item->setText(0, QString::number(group->groupId));
   item->setText(1, QString(group->getName().c_str()));
   item->setText(2, QString::number(group->meanMz, 'f', 4));
-  int charge = _mainwindow->mavenParameters->getCharge(group->compound);
+  int charge = _mainwindow->mavenParameters->getCharge(group->getCompound());
 
   if (group->getExpectedMz(charge) != -1) {
     float mz = group->getExpectedMz(charge);
@@ -379,7 +379,6 @@ void TableDockWidget::addRow(PeakGroup *group, QTreeWidgetItem *root) {
     item->setIcon(0, QIcon(":/images/bad.png"));
 
   if (viewType == groupView) {
-
     item->setText(5, QString::number(group->expectedRtDiff, 'f', 2));
     item->setText(6, QString::number(group->sampleCount));
     item->setText(7, QString::number(group->goodPeakCount));
@@ -1566,7 +1565,7 @@ void TableDockWidget::findMatchingCompounds() {
   float ionizationMode = _mainwindow->mavenParameters->ionizationMode;
   for (int i = 0; i < allgroups.size(); i++) {
     PeakGroup &g = allgroups[i];
-    int charge = _mainwindow->mavenParameters->getCharge(g.compound);
+    int charge = _mainwindow->mavenParameters->getCharge(g.getCompound());
     QSet<Compound *> compounds =
         _mainwindow->massCalcWidget->findMathchingCompounds(g.meanMz,
                                                             massCutoff,
