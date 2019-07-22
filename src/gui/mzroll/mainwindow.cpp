@@ -1198,7 +1198,7 @@ void MainWindow::setUrl(QString url, QString link) {
 }
 
 void MainWindow::autoSaveSignal() {
-	Q_EMIT(saveSignal());
+    // Q_EMIT(saveSignal());
 }
 
 void MainWindow::setUrl(Compound* c) {
