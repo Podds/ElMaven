@@ -1009,12 +1009,12 @@ void TableDockWidget::setGroupLabel(char label) {
           subsetPeakGroups.push_back(*group);
         }
         group->setLabel(label);
-        if (numberOfGroupsMarked ==10){
-          numberOfGroupsMarked = 0;
-          Q_EMIT(UploadPeakBatch());
-          subsetPeakGroups.clear();
-          uploadCount+=1;
-          }
+//        if (numberOfGroupsMarked ==10){
+//          numberOfGroupsMarked = 0;
+//          Q_EMIT(UploadPeakBatch());
+//          subsetPeakGroups.clear();
+//          uploadCount+=1;
+//          }
       }
       updateItem(item);
     }
