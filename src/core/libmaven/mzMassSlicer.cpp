@@ -230,7 +230,7 @@ void MassSlices::algorithmB(MassCutoff* massCutoff, int rtStep )
     sort(slices.begin(), slices.end(), mzSlice::compIntensity);
 
     mergeOverlappingSlices(0.05f, 0.90f);
-    mergeNeighbouringSlices(massCutoff, 0.05f);
+    // mergeNeighbouringSlices(massCutoff, 0.05f);
 
     ofstream fs("slices.csv");
     fs << "mz,rt,mzMin,mzMax,rtMin,rtMax,ionCount,srmId\n";
