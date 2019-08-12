@@ -131,9 +131,9 @@ win32 {
 
 INSTALLS += sources target
 
-FORMS = forms/settingsform.ui  \
+FORMS = forms/settingsform.ui \
         forms/masscalcwidget.ui \
-#	forms/ligandwidget.ui \
+    #	forms/ligandwidget.ui \
         forms/isotopeswidget.ui \
         forms/peakdetectiondialog.ui \
         forms/pollyelmaveninterface.ui \
@@ -148,159 +148,159 @@ FORMS = forms/settingsform.ui  \
         forms/aboutpolly.ui \
         forms/spectramatching.ui\
         forms/peptidefragmentation.ui \
-    forms/awsbucketcredentialsdialog.ui \
-    forms/samplertwidget.ui \
-    forms/isotopeplotdockwidget.ui \
-    forms/gettingstarted.ui \
-    forms/pollywaitdialog.ui \
-    forms/peaktabledeletiondialog.ui
+        forms/awsbucketcredentialsdialog.ui \
+        forms/samplertwidget.ui \
+        forms/isotopeplotdockwidget.ui \
+        forms/gettingstarted.ui \
+        forms/pollywaitdialog.ui \
+        forms/peaktabledeletiondialog.ui
 
-HEADERS +=  stable.h \
-            globals.h \
-            mainwindow.h \
-            tinyplot.h \
-            node.h \
-                    enzyme_node.h \
-                    plotdock.h \
-                    metabolite_node.h \
-                    pathwaywidget.h \
-                    graphwidget.h \
-                    settingsform.h \
-                    database.h \
-                    background_peaks_update.h \
-                    isotopeplot.h\
-                    barplot.h \
-                    boxplot.h \
-                    edge.h \
-                    line.h \
-                    point.h \
-                    history.h \
-                    plot_axes.h \
-                    spectrawidget.h\
-                    masscalcgui.h \
-                    isotopeswidget.h \
-                    ligandwidget.h \
-                    eicwidget.h \
-                    peakdetectiondialog.h \
-                    pollyelmaveninterface.h \
-                    comparesamplesdialog.h \
-                    traindialog.h \
-                    tabledockwidget.h  \
-                    treedockwidget.h  \
-                    heatmap.h  \
-                    treemap.h  \
-                    note.h  \
-                    suggest.h \
-                    animationcontrol.h \
-                    alignmentdialog.h \
-                    scatterplot.h \
-                    noteswidget.h \
-                    gallerywidget.h \
-                    QHistogramSlider.h \
-                    qdownloader.h \
-                    rconsolewidget.h \
-                    highlighter.h \
-                    widgets/qprog.h \
-                    projectdockwidget.h \
-                    spectramatching.h \
-                    mzfileio.h \
-                    logwidget.h \
-                    spectralhit.h \
-                    grouprtwidget.h \
-                    alignmentvizallgroupswidget.h \
-                   spectralhitstable.h\
-                    clusterdialog.h \
-                    loginform.h \
-                    aboutpolly.h \
-                    peptidefragmentation.h \
-                    qcustomplot.h \
-                    saveJson.h \
-                    messageBoxResize.h \
-                    awsbucketcredentialsdialog.h \
-                    samplertwidget.h \
-                    controller.h \
-                    numeric_treewidgetitem.h \
-                    analytics.h \
-                    isotopeplotdockwidget.h \
-                    gettingstarted.h \
-                    pollywaitdialog.h \
-                    peaktabledeletiondialog.h \
-                    notificator.h \
-                    notificator_p.h \
-                    $$top_srcdir/crashhandler/elmavexceptionhandler.h \
-                    videoplayer.h \
+HEADERS += stable.h \
+           globals.h \
+           mainwindow.h \
+           tinyplot.h \
+           node.h \
+           enzyme_node.h \
+           plotdock.h \
+           metabolite_node.h \
+           pathwaywidget.h \
+           graphwidget.h \
+           settingsform.h \
+           database.h \
+           background_peaks_update.h \
+           isotopeplot.h\
+           barplot.h \
+           boxplot.h \
+           edge.h \
+           line.h \
+           point.h \
+           history.h \
+           plot_axes.h \
+           spectrawidget.h\
+           masscalcgui.h \
+           isotopeswidget.h \
+           ligandwidget.h \
+           eicwidget.h \
+           peakdetectiondialog.h \
+           pollyelmaveninterface.h \
+           comparesamplesdialog.h \
+           traindialog.h \
+           tabledockwidget.h  \
+           treedockwidget.h  \
+           heatmap.h  \
+           treemap.h  \
+           note.h  \
+           suggest.h \
+           animationcontrol.h \
+           alignmentdialog.h \
+           scatterplot.h \
+           noteswidget.h \
+           gallerywidget.h \
+           QHistogramSlider.h \
+           qdownloader.h \
+           rconsolewidget.h \
+           highlighter.h \
+           widgets/qprog.h \
+           projectdockwidget.h \
+           spectramatching.h \
+           mzfileio.h \
+           logwidget.h \
+           spectralhit.h \
+           grouprtwidget.h \
+           alignmentvizallgroupswidget.h \
+           spectralhitstable.h\
+           clusterdialog.h \
+           loginform.h \
+           aboutpolly.h \
+           peptidefragmentation.h \
+           qcustomplot.h \
+           saveJson.h \
+           messageBoxResize.h \
+           awsbucketcredentialsdialog.h \
+           samplertwidget.h \
+           controller.h \
+           numeric_treewidgetitem.h \
+           analytics.h \
+           isotopeplotdockwidget.h \
+           gettingstarted.h \
+           pollywaitdialog.h \
+           peaktabledeletiondialog.h \
+           notificator.h \
+           notificator_p.h \
+           $$top_srcdir/crashhandler/elmavexceptionhandler.h \
+           videoplayer.h \
 
 
-SOURCES += mainwindow.cpp  \
-database.cpp \
- plotdock.cpp \
- spectralhit.cpp \
- treedockwidget.cpp \
- node.cpp \
- enzyme_node.cpp \
- metabolite_node.cpp \
- tinyplot.cpp \
- graphwidget.cpp \
- pathwaywidget.cpp \
- settingsform.cpp \
- background_peaks_update.cpp \
- isotopeplot.cpp \
- barplot.cpp \
- boxplot.cpp \
- edge.cpp \
- point.cpp \
- history.cpp \
- spectrawidget.cpp \
- masscalcgui.cpp \
- isotopeswidget.cpp \
- ligandwidget.cpp \
- main.cpp \
- eicwidget.cpp \
- plot_axes.cpp \
- tabledockwidget.cpp \
- peakdetectiondialog.cpp \
- pollyelmaveninterface.cpp \
- comparesamplesdialog.cpp \
- traindialog.cpp \
- line.cpp  \
- heatmap.cpp \
- treemap.cpp \
- note.cpp  \
- suggest.cpp \
- animationcontrol.cpp\
- alignmentdialog.cpp\
- scatterplot.cpp \
- noteswidget.cpp \
- gallerywidget.cpp \
- QHistogramSlider.cpp \
- qdownloader.cpp \
- highlighter.cpp \
- rconsolewidget.cpp \
- clusterdialog.cpp \
- loginform.cpp \
- aboutpolly.cpp \
- widgets/qprog.cpp \
- projectdockwidget.cpp \
- spectramatching.cpp \
- mzfileio.cpp \
- spectralhitstable.cpp \
- grouprtwidget.cpp \
- alignmentvizallgroupswidget.cpp \
- logwidget.cpp \
- peptidefragmentation.cpp \
- qcustomplot.cpp \
- saveJson.cpp \
-    awsbucketcredentialsdialog.cpp \
-    samplertwidget.cpp \
-    controller.cpp \
-    numeric_treewidgetitem.cpp \
-    analytics.cpp \
-    isotopeplotdockwidget.cpp \
-    gettingstarted.cpp \
-    pollywaitdialog.cpp \
-    peaktabledeletiondialog.cpp \
-    notificator.cpp \
-    videoplayer.cpp
+SOURCES += mainwindow.cpp \
+           database.cpp \
+           plotdock.cpp \
+           spectralhit.cpp \
+           treedockwidget.cpp \
+           node.cpp \
+           enzyme_node.cpp \
+           metabolite_node.cpp \
+           tinyplot.cpp \
+           graphwidget.cpp \
+           pathwaywidget.cpp \
+           settingsform.cpp \
+           background_peaks_update.cpp \
+           isotopeplot.cpp \
+           barplot.cpp \
+           boxplot.cpp \
+           edge.cpp \
+           point.cpp \
+           history.cpp \
+           spectrawidget.cpp \
+           masscalcgui.cpp \
+           isotopeswidget.cpp \
+           ligandwidget.cpp \
+           main.cpp \
+           eicwidget.cpp \
+           plot_axes.cpp \
+           tabledockwidget.cpp \
+           peakdetectiondialog.cpp \
+           pollyelmaveninterface.cpp \
+           comparesamplesdialog.cpp \
+           traindialog.cpp \
+           line.cpp  \
+           heatmap.cpp \
+           treemap.cpp \
+           note.cpp  \
+           suggest.cpp \
+           animationcontrol.cpp\
+           alignmentdialog.cpp\
+           scatterplot.cpp \
+           noteswidget.cpp \
+           gallerywidget.cpp \
+           QHistogramSlider.cpp \
+           qdownloader.cpp \
+           highlighter.cpp \
+           rconsolewidget.cpp \
+           clusterdialog.cpp \
+           loginform.cpp \
+           aboutpolly.cpp \
+           widgets/qprog.cpp \
+           projectdockwidget.cpp \
+           spectramatching.cpp \
+           mzfileio.cpp \
+           spectralhitstable.cpp \
+           grouprtwidget.cpp \
+           alignmentvizallgroupswidget.cpp \
+           logwidget.cpp \
+           peptidefragmentation.cpp \
+           qcustomplot.cpp \
+           saveJson.cpp \
+           awsbucketcredentialsdialog.cpp \
+           samplertwidget.cpp \
+           controller.cpp \
+           numeric_treewidgetitem.cpp \
+           analytics.cpp \
+           isotopeplotdockwidget.cpp \
+           gettingstarted.cpp \
+           pollywaitdialog.cpp \
+           peaktabledeletiondialog.cpp \
+           notificator.cpp \
+           videoplayer.cpp
 
 
 contains (DEFINES,EMBEDHTTPSERVER) {
