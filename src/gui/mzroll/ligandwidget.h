@@ -104,6 +104,7 @@ private:
     QTreeWidget *treeWidget;
     QComboBox *databaseSelect;
     QToolButton *saveButton;
+    QToolButton* btnAdducts;
     QToolButton *loadButton;
     QLineEdit*  filterEditor;
     QPoint dragStartPosition;

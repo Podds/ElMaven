@@ -66,12 +66,17 @@ LigandWidget::LigandWidget(MainWindow* mw) {
   saveButton->setToolTip("Save Compound List");
   connect(saveButton,SIGNAL(clicked()), SLOT(saveCompoundList()));
 
+  btnAdducts = new QToolButton(toolBar);
+  btnAdducts->setIcon(QIcon(rsrcPath + "/adducts.png"));
+  btnAdducts->setToolTip("Open Adducts widget");
+  connect(btnAdducts, &QToolButton::clicked, _mw, &MainWindow::showAdductDialog);
 
   saveButton->setEnabled(false);
 
   toolBar->addWidget(databaseSelect);
   toolBar->addWidget(loadButton);
   toolBar->addWidget(saveButton);
+  toolBar->addWidget(btnAdducts);
 
   //Feature updated when merging with Maven776- Filter out compounds based on a keyword.
   filterEditor = new QLineEdit(toolBar);
@@ -89,14 +94,6 @@ LigandWidget::LigandWidget(MainWindow* mw) {
   setTitleBarWidget(toolBar);
   setWindowTitle("Compounds");
 
-
-
-
-
-
-  //disconnect(&http, SIGNAL(readyRead(const QHttpResponseHeader &)));
-  //connect(&http, SIGNAL(readyRead(const QHttpResponseHeader &)), SLOT(readRemoteData(const QHttpResponseHeader &)));
-  
   // Fetches and reads compounds from a remote location when fetch button is clicked - Kiran
   disconnect(_mw->settingsForm->fetchCompounds,SIGNAL(clicked()));
   connect(_mw->settingsForm->fetchCompounds,SIGNAL(clicked()),this,SLOT(fetchRemoteCompounds()));
@@ -104,10 +101,6 @@ LigandWidget::LigandWidget(MainWindow* mw) {
 
   m_manager = new QNetworkAccessManager(this);
   connect(m_manager,SIGNAL(finished(QNetworkReply*)),this,SLOT(readRemoteData(QNetworkReply*)));
-
-  //get list of methods from central database
-  //http://data_server_url?action=fetchcompounds&format=xml
-  //fetchRemoteCompounds();
 
   QDirIterator itr(":/databases/");
 
@@ -133,6 +126,7 @@ LigandWidget::LigandWidget(MainWindow* mw) {
   connect(databaseSelect, SIGNAL(currentIndexChanged(QString)), this, SLOT(setDatabase(QString)));
 
 }
+
 QString LigandWidget::getDatabaseName() {
 	return databaseSelect->currentText();
 }
