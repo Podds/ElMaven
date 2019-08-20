@@ -32,6 +32,7 @@
 class QAction;
 class QMenu;
 class QTextEdit;
+class AdductWidget;
 class MainWindow;
 class Database;
 class Compound;
@@ -113,6 +114,7 @@ private:
     QHash<QString,bool>alteredDatabases;
 
     MainWindow* _mw;
+    AdductWidget* adductWidget;
     QString filterString;
     QTreeWidgetItem* addItem(QTreeWidgetItem* parentItem, string key , float value);
     QTreeWidgetItem* addItem(QTreeWidgetItem* parentItem, string key , string value);
