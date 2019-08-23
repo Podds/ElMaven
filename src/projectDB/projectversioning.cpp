@@ -18,7 +18,8 @@ namespace ProjectVersioning {
 map<Version, int> appDbVersionMap = {
     {Version("0.6.0"), 0},
     {Version("0.7.0"), 1},
-    {Version("0.8.0"), 2}
+    {Version("0.8.0"), 2},
+    {Version("0.9.0"), 3}
 };
 
 /**
@@ -116,6 +117,16 @@ map<int, string> dbVersionUpgradeScripts = {
         1,
         "BEGIN TRANSACTION;"
         "ALTER TABLE user_settings ADD COLUMN must_have_fragmentation INTEGER;"
+        "COMMIT;"
+    },
+    {
+        2,
+        "BEGIN TRANSACTION;"
+        "ALTER TABLE peakgroups ADD COLUMN slice_mz_min REAL;"
+        "ALTER TABLE peakgroups ADD COLUMN slice_mz_max REAL;"
+        "ALTER TABLE peakgroups ADD COLUMN slice_rt_min REAL;"
+        "ALTER TABLE peakgroups ADD COLUMN slice_rt_max REAL;"
+        "ALTER TABLE peakgroups ADD COLUMN slice_ion_count REAL;"
         "COMMIT;"
     }
 };
