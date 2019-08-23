@@ -340,7 +340,7 @@ void SettingsForm::recomputeIsotopes() {
 
     //update isotope plot in EICview
     if (mainwindow->getEicWidget()->isVisible()) {
-        PeakGroup* group = mainwindow->getEicWidget()->getParameters()->getSelectedGroup();
+        PeakGroup* group = mainwindow->getEicWidget()->getParameters()->displayedGroup();
         if (group)
         {
             mainwindow->isotopeWidget->updateIsotopicBarplot(group);
@@ -364,7 +364,7 @@ void SettingsForm::recomputeEIC() {
      
     getFormValues();
 
-    PeakGroup* previousGroup = mainwindow->getEicWidget()->getParameters()->getSelectedGroup();
+    PeakGroup* previousGroup = mainwindow->getEicWidget()->getParameters()->displayedGroup();
     float rt = 0;
 
     if (previousGroup) {
