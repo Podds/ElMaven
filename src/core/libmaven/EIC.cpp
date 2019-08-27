@@ -1,3 +1,5 @@
+#include "datastructures/adduct.h"
+#include "datastructures/mzSlice.h"
 #include "EIC.h"
 #include "Peak.h"
 #include "PeakGroup.h"
@@ -875,7 +877,7 @@ void EIC::removeLowRankGroups(vector<PeakGroup> &groups, unsigned int rankLimit)
 
 //TODO: Lots of parameters. Refactor this code - Sahil
 vector<PeakGroup> EIC::groupPeaks(vector<EIC *> &eics,
-                                  Compound* compound,
+                                  mzSlice* slice,
                                   int smoothingWindow,
                                   float maxRtDiff,
                                   double minQuality,
@@ -925,7 +927,12 @@ vector<PeakGroup> EIC::groupPeaks(vector<EIC *> &eics,
     {
         PeakGroup grp;
         grp.groupId = i;
-        grp.compound = compound;
+        if (slice) {
+            grp.compound = slice->compound;
+            grp.adduct = slice->adduct;
+            if (slice->adduct)
+                grp.tagString = slice->adduct->getName();
+        }
         grp.setSelectedSamples(samples);
         pgroups.push_back(grp);
     }

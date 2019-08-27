@@ -6,6 +6,7 @@
 
 class Compound;
 class MassCutoff;
+class Adduct;
 
 using namespace std;
 
@@ -35,7 +36,8 @@ class mzSlice
         rtmax = d;
         mz = a + (b - a) / 2;
         rt = c + (d - c) / 2;
-        compound = NULL;
+        compound = nullptr;
+        adduct = nullptr;
         ionCount = 0;
     }
 
@@ -57,7 +59,8 @@ class mzSlice
     mzSlice()
     {
         mzmin = mzmax = rtmin = rtmax = mz = rt = ionCount = 0;
-        compound = NULL;
+        compound = nullptr;
+        adduct = nullptr;
     }
 
     mzSlice &operator=(const mzSlice &b)
@@ -68,6 +71,8 @@ class mzSlice
         rtmax = b.rtmax;
         ionCount = b.ionCount;
         compound = b.compound;
+        compoundVector = b.compoundVector;
+        adduct = b.adduct;
         srmId = b.srmId;
         mz = b.mz;
         rt = b.rt;
@@ -91,7 +96,9 @@ class mzSlice
     float rtmin;
     float rtmax;
     float ionCount;
-    Compound *compound;
+    Compound* compound;
+    vector<Compound*> compoundVector;
+    Adduct* adduct;
     string srmId;
 
     /**

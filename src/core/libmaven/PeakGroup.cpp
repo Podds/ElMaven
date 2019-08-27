@@ -1,5 +1,6 @@
 #include "PeakGroup.h"
 #include "Compound.h"
+#include "datastructures/adduct.h"
 #include "datastructures/mzSlice.h"
 #include "mzSample.h"
 #include "EIC.h"
@@ -486,12 +487,14 @@ double PeakGroup::getExpectedMz(int charge) {
         return expectedMz;
     }
     else if (!isIsotope() && compound && compound->mass > 0) {
-        if (!compound->formula.empty()) {
+        if (!compound->formula.empty() && adduct != nullptr) {
+            auto mass = MassCalculator::computeNeutralMass(compound->formula);
+            mz = adduct->computeAdductMass(mass);
+        } else if (!compound->formula.empty()) {
             mz = compound->adjustedMass(charge);
         } else {
             mz = compound->mass;
         }
-
         return mz;
     }
     else if (compound && compound->mass == 0 && compound->productMz > 0) {

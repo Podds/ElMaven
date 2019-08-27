@@ -469,7 +469,10 @@ void BackgroundPeakUpdate::align() {
 
 void BackgroundPeakUpdate::alignUsingDatabase() {
 
-    vector<mzSlice*> slices = peakDetector->processCompounds(mavenParameters->compounds, "compounds");
+    vector<mzSlice*> slices =
+        peakDetector->processCompounds(mavenParameters->compounds,
+                                       mavenParameters->getDefaultAdductList(),
+                                       "compounds");
         processSlices(slices, "compounds");
 
 
@@ -499,15 +502,22 @@ void BackgroundPeakUpdate::qtSlot(const string& progressText, unsigned int progr
 }
 
 void BackgroundPeakUpdate::processCompounds(vector<Compound*> set,
-                                            string setName) {
+                                            string setName)
+{
+    if (set.size() == 0)
+            return;
 
-        if (set.size() == 0)
-                return;
+    Q_EMIT(updateProgressBar("Processing Compounds", 0, 0));
 
-        Q_EMIT(updateProgressBar("Processing Compounds", 0, 0));
-        vector<mzSlice*> slices = peakDetector->processCompounds(set, setName);
-        processSlices(slices, setName);
-        delete_all(slices);
+    auto adductList = mavenParameters->getDefaultAdductList();
+    if (mavenParameters->searchAdducts)
+        adductList = DB.adductsDB;
+
+    vector<mzSlice*> slices = peakDetector->processCompounds(set,
+                                                             adductList,
+                                                             setName);
+    processSlices(slices, setName);
+    delete_all(slices);
 }
 
 void BackgroundPeakUpdate::processMassSlices() {

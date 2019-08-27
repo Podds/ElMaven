@@ -1,3 +1,4 @@
+#include "adduct.h"
 #include "mzSlice.h"
 #include "Compound.h"
 #include "masscutofftype.h"
@@ -5,9 +6,13 @@
 
 bool mzSlice::calculateMzMinMax(MassCutoff *compoundMassCutoffWindow, int charge)
 {
-	
-	//Calculating the mzmin and mzmax
-	if (!this->compound->formula.empty())
+    // calculating the mzmin and mzmax
+    if (this->adduct != nullptr) {
+        auto mass = MassCalculator::computeNeutralMass(compound->formula);
+        auto adjustedMass = adduct->computeAdductMass(mass);
+        mzmin = adjustedMass - compoundMassCutoffWindow->massCutoffValue(mass);
+        mzmax = adjustedMass + compoundMassCutoffWindow->massCutoffValue(mass);
+    } else if (!this->compound->formula.empty())
 	{
 		//Computing the mass if the formula is given
 		double mass = MassCalculator::computeMass(this->compound->formula, charge);

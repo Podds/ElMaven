@@ -46,6 +46,9 @@ MavenParameters::MavenParameters(string settingsPath):lastUsedSettingsPath(setti
 
         limitGroupCount = INT_MAX;
 
+        // to allow adduct matching
+        searchAdducts = false;
+
         // peak detection
         eic_smoothingWindow = 10;
         eic_smoothingAlgorithm = 0;
@@ -172,6 +175,19 @@ void MavenParameters::setOutputDir(QString outdir) {
 std::map<string, string>& MavenParameters::getSettings()
 {
     return mavenSettings;
+}
+
+std::vector<Adduct*> MavenParameters::getDefaultAdductList()
+{
+    vector<Adduct*> adductList;
+    if (ionizationMode > 0) {
+        adductList.push_back(MassCalculator::PlusHAdduct);
+    } else if (ionizationMode < 0) {
+        adductList.push_back(MassCalculator::MinusHAdduct);
+    } else {
+        adductList.push_back(MassCalculator::ZeroMassAdduct);
+    }
+    return adductList;
 }
 
 void  MavenParameters::setPeakDetectionSettings(const char* key, const char* value)
