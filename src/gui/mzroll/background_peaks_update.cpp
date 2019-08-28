@@ -502,6 +502,7 @@ void BackgroundPeakUpdate::qtSlot(const string& progressText, unsigned int progr
 }
 
 void BackgroundPeakUpdate::processCompounds(vector<Compound*> set,
+                                            vector<Adduct*> adducts,
                                             string setName)
 {
     if (set.size() == 0)
@@ -509,12 +510,8 @@ void BackgroundPeakUpdate::processCompounds(vector<Compound*> set,
 
     Q_EMIT(updateProgressBar("Processing Compounds", 0, 0));
 
-    auto adductList = mavenParameters->getDefaultAdductList();
-    if (mavenParameters->searchAdducts)
-        adductList = DB.adductsDB;
-
     vector<mzSlice*> slices = peakDetector->processCompounds(set,
-                                                             adductList,
+                                                             adducts,
                                                              setName);
     processSlices(slices, setName);
     delete_all(slices);
@@ -553,7 +550,13 @@ void BackgroundPeakUpdate::computePeaks() {
         if (mavenParameters->compounds.size() == 0)
                 return;
 
-        processCompounds(mavenParameters->compounds, "compounds");
+        auto adductList = mavenParameters->getDefaultAdductList();
+        if (mavenParameters->searchAdducts)
+            adductList = mavenParameters->getChosenAdductList();
+
+        processCompounds(mavenParameters->compounds,
+                         adductList,
+                         "compounds");
 }
 
 /**
