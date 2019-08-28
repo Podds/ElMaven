@@ -40,6 +40,7 @@ PeakDetectionSettings::PeakDetectionSettings(PeakDetectionDialog* dialog):pd(dia
     settings.insert("matchRt", QVariant::fromValue(pd->matchRt));
     settings.insert("compoundRtWindow", QVariant::fromValue(pd->compoundRTWindow));
     settings.insert("limitGroupsPerCompound", QVariant::fromValue(pd->eicMaxGroups));
+    settings.insert("searchAdducts", QVariant::fromValue(pd->searchAdducts));
 
     // fragmentation settings
     settings.insert("matchFragmentation", QVariant::fromValue(pd->matchFragmentationOptions));
@@ -240,10 +241,13 @@ void PeakDetectionDialog::dbOptionsClicked()
         mainwindow->alignmentDialog->peakDetectionAlgo->setCurrentIndex(0);
         featureOptions->setChecked(false);
         reportIsotopesOptions->setEnabled(true);
+        searchAdducts->setEnabled(true);
     } else {
         mainwindow->alignmentDialog->peakDetectionAlgo->setCurrentIndex(1);
         featureOptions->setChecked(true);
         reportIsotopesOptions->setEnabled(false);
+        searchAdducts->setChecked(false);
+        searchAdducts->setEnabled(false);
     }
     
     QString dbName = compoundDatabase->currentText();
@@ -262,10 +266,13 @@ void PeakDetectionDialog::featureOptionsClicked()
         mainwindow->alignmentDialog->peakDetectionAlgo->setCurrentIndex(1);
         dbOptions->setChecked(false);
         reportIsotopesOptions->setEnabled(false);
+        searchAdducts->setChecked(false);
+        searchAdducts->setEnabled(false);
     } else {
         mainwindow->alignmentDialog->peakDetectionAlgo->setCurrentIndex(0);
         dbOptions->setChecked(true);
         reportIsotopesOptions->setEnabled(true);
+        searchAdducts->setEnabled(true);
     }
 
     QString dbName = compoundDatabase->currentText();
