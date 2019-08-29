@@ -9,6 +9,7 @@
 #include "analytics.h"
 #include "base64.h"
 #include "Compound.h"
+#include "datastructures/adduct.h"
 #include "errorcodes.h"
 #include "globals.h"
 #include "ligandwidget.h"
@@ -978,6 +979,9 @@ void mzFileIO::_readPeakTablesFromSQLiteProject(const vector<mzSample*> newSampl
             }
             dbNames.push_back(QString::fromStdString(group->compound->db));
         }
+
+        if (group->adduct != nullptr)
+            group->adduct = DB.findAdductByName(group->adduct->getName());
 
         // assign group to bookmark table if none exists
         if (group->searchTableName.empty())
