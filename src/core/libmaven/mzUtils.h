@@ -475,6 +475,15 @@ namespace mzUtils {
     bool almostEqual(float a, float b);
 
     /**
+     * @brief Generates a random integer between two given values.
+     * @param min An integer representing the lower limit value.
+     * @param max An integer representing the upper limit value.
+     * @return Returns a random integer that is less than max 
+     * and greater than min.
+     */
+    int randInt(const int min, const int max);
+
+    /**
      * [fractional overlap between two line segments]
      * @method checkOverlap
      * @param  a            []

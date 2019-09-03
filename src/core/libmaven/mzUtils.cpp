@@ -6,6 +6,8 @@
 #include <boost/iostreams/copy.hpp>
 #include <boost/iostreams/filter/zlib.hpp>
 #include <boost/iostreams/filtering_streambuf.hpp>
+#include <random>
+
 
 /**
  * random collection of useful functions 
@@ -1152,6 +1154,14 @@ Series:  Prentice-Hall Series in Automatic Computation
         cerr << "RUNTIME OF " << name << ": "
              << chrono::duration_cast<chrono::milliseconds>(diff).count()
              << " ms\n";
+    }
+
+    int randInt(const int min, const int max)
+    {
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<> dis(min, max);
+        return dis(gen);
     }
 
 } //namespace end
